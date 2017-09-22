@@ -16,7 +16,7 @@ build:
       name: "Hello" 
       code: | 
         echo "I don't do anything yet"      
-    - markxnelson/java-flight-recorder:0.1.1:
+    - markxnelson/java-flight-recorder@0.1.1:
       application: com.oracle.sample.SampleApplication
       classpath:
       experimental: true

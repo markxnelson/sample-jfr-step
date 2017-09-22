@@ -23,5 +23,6 @@ hs_err_pid*
 
 
 .idea
+.wercker
 *.jfr
 target/
