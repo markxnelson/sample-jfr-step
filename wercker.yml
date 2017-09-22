@@ -1,0 +1,24 @@
+# Copyright 2017, Oracle Corporation and/or affiliates.  All rights reserved.
+
+# This is a sample that demonstrates how to use the Java Flight Recorder 
+# Wercker step. 
+#
+
+box: 
+  id: store/oracle/serverjre
+  username: $DOCKER_USERNAME
+  password: $DOCKER_PASSWORD
+  tag: 8
+
+build:
+  steps:
+    - script:
+      name: "Hello" 
+      code: | 
+        echo "I don't do anything yet"      
+    - markxnelson/java-flight-recorder:0.1.1
+      application: com.oracle.sample.SampleApplication
+      classpath:
+      experimental: true
+      duration: 3m
+      delay: 1m  
