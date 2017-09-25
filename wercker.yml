@@ -10,15 +10,17 @@ box:
   password: $DOCKER_PASSWORD
   tag: 8
 
-build:
+dev:
   steps:
     - script:
       name: "Hello" 
       code: | 
         echo "I don't do anything yet"      
-    - markxnelson/java-flight-recorder@0.1.1:
+        date
+    - markxnelson/java-flight-recorder@0.1.15 "https://github.com/markxnelson/java-flight-recorder/archive/master.tar.gz":
       application: com.oracle.sample.SampleApplication
-      classpath:
+      classpath: /pipeline/source/target/production/sample-jfr-step
+      filename: myrecording.jfr
       experimental: true
-      duration: 3m
-      delay: 1m  
+      duration: 4m
+      delay: 30s 
