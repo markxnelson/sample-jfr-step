@@ -20,42 +20,45 @@ public class SampleApplication {
   public static void main(String[] args) {
     long startTime = System.currentTimeMillis();
 
+    // create some objects to get started
+    for (int i = 0; i < 10; i++) createObjects();
+
     // keep running for five minutes
     while (System.currentTimeMillis() - startTime < (5 * 60 * 1000)) {
-      switch (random.nextInt(2)) {
+      switch (random.nextInt(3)) {
         case 0:
+        case 1:
           // add some objects
           createObjects();
           break;
-        case 1:
+        case 2:
           // remove some objects
           removeObjects();
           break;
-        case 2:
+        case 3:
         default:
           // do nothing
-          System.out.println("Doing nothing this time...");
+          System.out.print("z");
       }
       try {
         // now sleep for a random time up to ten seconds
-        System.out.println("Sleeping...");
         Thread.sleep(random.nextInt(10 * 1000));
       } catch (InterruptedException e) {
         // ignore
       }
     }
-    System.out.println("Bye!");
+    System.out.println("\nBye!");
   }
 
   private static void createObjects() {
-    System.out.println("Creating objects...");
+    System.out.print("+");
     for (int i = 0; i < 2; i++) {
        objects.add(new byte[10*1024*1024]);
      }
   }
 
   private static void removeObjects() {
-    System.out.println("Removing objects...");
+    System.out.print("-");
     int start = objects.size() - 1;
     int end = start - 2;
     for (int i = start; ((i >= 0) && (i > end)); i--) {

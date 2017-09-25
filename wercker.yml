@@ -12,15 +12,17 @@ box:
 
 dev:
   steps:
-    - script:
-      name: "Hello" 
-      code: | 
-        echo "I don't do anything yet"      
-        date
-    - markxnelson/java-flight-recorder@0.1.15 "https://github.com/markxnelson/java-flight-recorder/archive/master.tar.gz":
+#    - internal/shell
+    - markxnelson/java-flight-recorder@0.1.40 "https://github.com/markxnelson/java-flight-recorder/archive/master.tar.gz":
+      timeout: 2m
       application: com.oracle.sample.SampleApplication
       classpath: /pipeline/source/target/production/sample-jfr-step
       filename: myrecording.jfr
       experimental: true
       duration: 4m
       delay: 30s 
+      maxsize: 10M
+      maxage: 1h
+
+# add pipelines for all the different tests
+# and a top level one to run them all
