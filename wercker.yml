@@ -19,7 +19,7 @@ build:
 
 regular-test:
   steps:
-    - markxnelson/java-flight-recorder "https://github.com/markxnelson/java-flight-recorder/archive/master.tar.gz":
+    - markxnelson/java-flight-recorder:
       application: com.oracle.sample.SampleApplication
       classpath: /pipeline/source/build/libs/sample-jfr-step.jar
       filename: myrecording.jfr
@@ -29,7 +29,7 @@ regular-test:
 
 test-timeout:
   steps:
-    - markxnelson/java-flight-recorder@0.1.40 "https://github.com/markxnelson/java-flight-recorder/archive/master.tar.gz":
+    - markxnelson/java-flight-recorder:
       timeout: 2m
       application: com.oracle.sample.SampleApplication
       classpath: /pipeline/source/build/libs/sample-jfr-step.jar

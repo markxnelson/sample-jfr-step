@@ -21,7 +21,7 @@ public class SampleApplication {
     long startTime = System.currentTimeMillis();
 
     // create some objects to get started
-    for (int i = 0; i < 10; i++) createObjects();
+    for (int i = 0; i < 5; i++) createObjects();
 
     // keep running for five minutes
     while (System.currentTimeMillis() - startTime < (5 * 60 * 1000)) {
