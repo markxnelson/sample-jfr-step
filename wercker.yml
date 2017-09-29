@@ -15,7 +15,10 @@ build:
   steps:
     - script:
       name: Build
-      code: echo "Hello Java Flight Recorder!"
+      code: |
+        echo "Hello Java Flight Recorder!"
+        echo "Choose the pipeline you want to run, e.g. 'test-timeout' and run it like this:"
+        echo "wercker build --pipeline=test-timeout"
 
 regular-test:
   steps:
@@ -40,3 +43,17 @@ test-timeout:
       maxsize: 10M
       maxage: 1h
 
+regular-test-java9:
+  box:
+    id: store/oracle/serverjre
+    username: $DOCKER_USERNAME
+    password: $DOCKER_PASSWORD
+    tag: 9
+  steps:
+    - markxnelson/java-flight-recorder:
+      application: com.oracle.sample.SampleApplication
+      classpath: /pipeline/source/build/libs/sample-jfr-step.jar
+      filename: myrecording.jfr
+      experimental: true
+      duration: 4m
+      delay: 30s
